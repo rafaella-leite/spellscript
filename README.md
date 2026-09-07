@@ -92,7 +92,7 @@ Também é possível jogar diretamente pela versão publicada no GitHub Pages.
 
 🌐 Jogo publicado
 
-GitHub Pages: COLOQUE_AQUI_O_LINK_DO_JOGO
+GitHub Pages: https://rafaella-leite.github.io/spellscript/
 
 📦 Repositório
 
