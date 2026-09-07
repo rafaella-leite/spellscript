@@ -96,7 +96,7 @@ GitHub Pages: COLOQUE_AQUI_O_LINK_DO_JOGO
 
 📦 Repositório
 
-GitHub: COLOQUE_AQUI_O_LINK_DO_REPOSITORIO
+GitHub: https://github.com/rafaella-leite/spellscript
 
 📄 Licença
 
