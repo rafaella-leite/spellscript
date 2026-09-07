@@ -26,10 +26,10 @@ A cada rodada, uma receita com quatro ingredientes é apresentada. Após alguns 
 
 Quando um ingrediente incorreto é selecionado, um efeito aleatório acontece:
 
-- 💥 **Potion Overflow:** o caldeirão explode.
-- 🐸 **Frog Transformation:** a bruxa é transformada em sapo.
-- 👻 **Undeclared Spirit:** um fantasma é invocado.
-- 🐈‍⬛ **Familiar Interference:** o familiar interfere no feitiço.
+- 💥 **Poção Overflow:** o caldeirão explode.
+- 🐸 **Você virou um sapo:** a bruxa é transformada em sapo.
+- 👻 **Espírito desconhecido:** um fantasma é invocado.
+- 🐈‍⬛ **Interferencia familiar:** o familiar interfere no feitiço.
 
 Cada erro possui animação e efeito sonoro próprio.
 
