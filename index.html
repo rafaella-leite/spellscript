@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="SpellScript é um jogo de memória onde você precisa preparar poções seguindo sequências mágicas.">
+
+    <title>SpellScript</title>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FUNDO -->
+    <div class="background-effects" aria-hidden="true">
+        <span>✦</span>
+        <span>✧</span>
+        <span>⋆</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>⋆</span>
+        <span>✦</span>
+        <span>✧</span>
+    </div>
+
+
+    <!-- TELA INICIAL -->
+    <section id="startScreen" class="screen start-screen">
+
+        <div class="start-content">
+
+            <span class="eyebrow">
+                sistema mágico experimental
+            </span>
+
+            <h1>
+                Spell<span>Script</span>
+            </h1>
+
+            <p class="subtitle">
+                Memorize o script, compile a poção
+                e tente não transformar tudo em sapo.
+            </p>
+
+
+            <div class="start-visual">
+
+                <div class="floating-code code-left">
+                    &lt;spell&gt;
+                </div>
+
+                <div class="witch-main">
+                    🧙‍♀️
+                </div>
+
+                <div class="floating-code code-right">
+                    potion();
+                </div>
+
+                <span class="sparkle sparkle-a">✦</span>
+                <span class="sparkle sparkle-b">✧</span>
+                <span class="sparkle sparkle-c">⋆</span>
+
+            </div>
+
+
+            <div class="start-buttons">
+
+                <button id="startButton" class="primary-button">
+                    Executar feitiço
+                </button>
+
+                <button id="rulesButton" class="secondary-button">
+                    Como jogar?
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JOGO -->
+    <main id="gameScreen" class="screen game-screen hidden">
+
+        <!-- HEADER -->
+        <header class="game-header">
+
+            <div class="brand">
+                <span class="brand-icon">🧙🏼‍♀️</span>
+
+                <div>
+                    <strong>SpellScript</strong>
+                    <small>magic runtime</small>
+                </div>
+            </div>
+
+
+            <div class="game-stats">
+
+                <div class="stat">
+                    <span>POÇÃO</span>
+                    <strong>
+                        <span id="round">1</span>/<span id="totalRounds">10</span>
+                    </strong>
+                </div>
+
+                <div class="stat">
+                    <span>SCORE</span>
+                    <strong id="score">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>VIDAS</span>
+                    <strong id="lives">
+                        ❤️ ❤️ ❤️ ❤️ ❤️
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <button id="gameRulesButton" class="help-button">
+                ?
+            </button>
+
+        </header>
+
+
+        <!-- RECEITA -->
+        <section class="recipe-section">
+
+            <div class="recipe-top">
+
+                <span class="code-label">
+                    SPELLSCRIPT // RECEITA
+                </span>
+
+                <span class="status-dot">
+                    ● ACTIVE
+                </span>
+
+            </div>
+
+
+            <div id="recipeDisplay" class="recipe-display">
+            </div>
+
+
+            <p id="statusMessage" class="status-message">
+                Inicializando sistema mágico...
+            </p>
+
+        </section>
+
+
+        <!-- ÁREA PRINCIPAL -->
+        <section class="game-area">
+
+
+            <!-- INGREDIENTES -->
+            <div class="ingredients-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+                        <span class="eyebrow">
+                            BANCADA DE INGREDIENTES
+                        </span>
+
+                        <h2>
+                            Ingredientes
+                        </h2>
+                    </div>
+
+                    <span class="tiny-note">
+                        selecione na ordem correta
+                    </span>
+
+                </div>
+
+
+                <div id="ingredientsGrid" class="ingredients-grid">
+                </div>
+
+            </div>
+
+
+            <!-- CALDEIRÃO -->
+            <div class="cauldron-panel">
+
+                <div class="panel-code">
+                    <span>
+                        potion.execute()
+                    </span>
+
+                    <span class="online">
+                        ● ONLINE
+                    </span>
+                </div>
+
+
+                <div class="witch-character" id="witchCharacter">
+                    🧙‍♀️
+                </div>
+
+
+                <div class="cauldron-wrapper">
+
+                    <div class="steam steam-1"></div>
+                    <div class="steam steam-2"></div>
+                    <div class="steam steam-3"></div>
+
+
+                    <div id="cauldron" class="cauldron">
+
+                        <div class="liquid">
+
+                            <span class="bubble bubble-1"></span>
+                            <span class="bubble bubble-2"></span>
+                            <span class="bubble bubble-3"></span>
+                            <span class="bubble bubble-4"></span>
+
+                        </div>
+
+
+                        <div class="cauldron-body">
+                            <div class="shine"></div>
+                        </div>
+
+
+                        <div class="leg left-leg"></div>
+                        <div class="leg right-leg"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sequence-area">
+
+                    <span class="sequence-title">
+                        OUTPUT
+                    </span>
+
+                    <div id="playerSequence" class="player-sequence">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ERRO EM TELA CHEIA -->
+    <div id="errorOverlay" class="error-overlay hidden">
+
+        <div id="errorFlash" class="error-flash"></div>
+
+        <div id="screenGhost" class="screen-effect-object ghost-object">
+            👻
+        </div>
+
+        <div id="screenCat" class="screen-effect-object cat-object">
+            🐈‍⬛
+        </div>
+
+
+        <div class="error-content">
+
+            <div id="errorEmoji" class="error-emoji">
+                💥
+            </div>
+
+            <span id="errorCode" class="error-code">
+                ERROR 01
+            </span>
+
+            <h2 id="errorTitle">
+                POÇÃO OVERFLOW
+            </h2>
+
+            <p id="errorDescription">
+                Ingrediente inesperado detectado.
+            </p>
+
+            <div class="life-lost">
+                ❤️ -1 VIDA
+            </div>
+
+            <div class="recompile">
+                <span></span>
+                Recompilando feitiço...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TELA FINAL -->
+    <section id="endScreen" class="screen end-screen hidden">
+
+        <div id="endIcon" class="end-icon">
+            🔮
+        </div>
+
+        <span id="endEyebrow" class="eyebrow">
+            FEITIÇO COMPILADO
+        </span>
+
+        <h2 id="endTitle">
+            Script concluído!
+        </h2>
+
+        <p id="endDescription">
+            Todas as poções foram executadas corretamente.
+        </p>
+
+        <div class="final-score">
+
+            <span>
+                SCORE FINAL
+            </span>
+
+            <strong id="finalScore">
+                0
+            </strong>
+
+        </div>
+
+        <button id="restartButton" class="primary-button">
+            Executar novamente
+        </button>
+
+    </section>
+
+
+    <!-- MODAL REGRAS -->
+    <dialog id="rulesModal" class="rules-modal">
+
+        <button id="closeRulesButton" class="close-modal">
+            ×
+        </button>
+
+        <span class="eyebrow">
+            DOCUMENTATION
+        </span>
+
+        <h2>
+            Como jogar
+        </h2>
+
+
+        <div class="rules-list">
+
+            <div class="rule-item">
+
+                <span class="rule-number">
+                    01
+                </span>
+
+                <div>
+                    <strong>
+                        Leia o script
+                    </strong>
+
+                    <p>
+                        Uma sequência de quatro ingredientes aparecerá
+                        na tela durante alguns segundos.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="rule-item">
+
+                <span class="rule-number">
+                    02
+                </span>
+
+                <div>
+                    <strong>
+                        Memorize
+                    </strong>
+
+                    <p>
+                        Depois de alguns segundos, a receita desaparece.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="rule-item">
+
+                <span class="rule-number">
+                    03
+                </span>
+
+                <div>
+                    <strong>
+                        Compile a poção
+                    </strong>
+
+                    <p>
+                        Clique nos ingredientes exatamente na ordem apresentada.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="rule-item">
+
+                <span class="rule-number">
+                    04
+                </span>
+
+                <div>
+                    <strong>
+                        Evite erros
+                    </strong>
+
+                    <p>
+                        Cada ingrediente incorreto custa uma vida e
+                        provoca uma falha mágica.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="rule-item">
+
+                <span class="rule-number">
+                    05
+                </span>
+
+                <div>
+                    <strong>
+                        Complete o programa
+                    </strong>
+
+                    <p>
+                        Prepare todas as 10 poções antes de perder suas cinco vidas.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="effects-info">
+
+            <strong>
+                POSSÍVEIS EXCEÇÕES
+            </strong>
+
+            <p>
+                💥 Poção Overflow
+                &nbsp;•&nbsp;
+                🐸 Você virou um sapo
+                &nbsp;•&nbsp;
+                👻 Espírito desconhecido
+                &nbsp;•&nbsp;
+                🐈‍⬛ Interferencia Familiar
+            </p>
+
+        </div>
+
+    </dialog>
+
+    <audio id="backgroundMusic" loop>
+        <source src="audio/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="catSound" preload="auto">
+        <source src="audio/gato.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="explosionSound" preload="auto">
+        <source src="audio/explosao.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="frogSound" preload="auto">
+        <source src="audio/sapo.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="ghostSound" preload="auto">
+        <source src="audio/fantasma.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
